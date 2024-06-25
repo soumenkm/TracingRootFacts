@@ -1,0 +1,110 @@
+{
+    "0": {
+        "input": "The national flag of [MASK] is known as Tiranga.",
+        "mask_pred_token": [
+            "Tanzania"
+        ]
+    },
+    "1": {
+        "input": "The prime minister of India since 2014 is [MASK] [MASK] [MASK] [MASK] [MASK].",
+        "mask_pred_token": [
+            "a",
+            "a",
+            "of",
+            "-",
+            "leader"
+        ]
+    },
+    "2": {
+        "input": "The capital of India is [MASK] [MASK].",
+        "mask_pred_token": [
+            "Delhi",
+            "Delhi"
+        ]
+    },
+    "3": {
+        "input": "The Indian festival of lights is called [MASK] [MASK].",
+        "mask_pred_token": [
+            "[UNK]",
+            "[UNK]"
+        ]
+    },
+    "4": {
+        "input": "The national bird of India is [MASK] [MASK].",
+        "mask_pred_token": [
+            "eagle",
+            "eagle"
+        ]
+    },
+    "5": {
+        "input": "The Indian independence day is celebrated on [MASK] [MASK].",
+        "mask_pred_token": [
+            "May",
+            "May"
+        ]
+    },
+    "6": {
+        "input": "The currency of India is the [MASK] [MASK] [MASK].",
+        "mask_pred_token": [
+            "Indian",
+            "pound",
+            "note"
+        ]
+    },
+    "7": {
+        "input": "The Indian city known as the 'City of Joy' is [MASK].",
+        "mask_pred_token": [
+            "nearby"
+        ]
+    },
+    "8": {
+        "input": "The river considered holy in India is the [MASK] [MASK].",
+        "mask_pred_token": [
+            "Krishna",
+            "Krishna"
+        ]
+    },
+    "9": {
+        "input": "The largest state in India by population is [MASK] [MASK].",
+        "mask_pred_token": [
+            "Gujarat",
+            "Gujarat"
+        ]
+    },
+    "10": {
+        "input": "The president of the United States lives in the [MASK] house.",
+        "mask_pred_token": [
+            "same"
+        ]
+    },
+    "11": {
+        "input": "The capital of the United States is [MASK] D.C.",
+        "mask_pred_token": [
+            "Washington"
+        ]
+    },
+    "12": {
+        "input": "The American city known as the 'Silicon Valley' is [MASK].",
+        "mask_pred_token": [
+            "nearby"
+        ]
+    },
+    "13": {
+        "input": "The river that runs through the Grand Canyon is the [MASK] river.",
+        "mask_pred_token": [
+            "Colorado"
+        ]
+    },
+    "14": {
+        "input": "The largest state in the United States by area is [MASK].",
+        "mask_pred_token": [
+            "California"
+        ]
+    },
+    "15": {
+        "input": "The American space agency is called [MASK].",
+        "mask_pred_token": [
+            "NASA"
+        ]
+    }
+}
