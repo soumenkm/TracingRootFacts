@@ -1,0 +1,219 @@
+{
+    "0": {
+        "input": "Arthur Loesser plays <mask> .",
+        "mask_true_token": [
+            "\u2581piano"
+        ],
+        "mask_pred_token": [
+            "\u2581in"
+        ]
+    },
+    "1": {
+        "input": "Miles Smiles plays <mask> music .",
+        "mask_true_token": [
+            "\u2581jazz"
+        ],
+        "mask_pred_token": [
+            "\u2581country"
+        ]
+    },
+    "2": {
+        "input": "The official language of Yerevan is <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581Armenia",
+            "n"
+        ],
+        "mask_pred_token": [
+            "\u2581Armenia",
+            "sh"
+        ]
+    },
+    "3": {
+        "input": "Jack Kilcoyne plays <mask> .",
+        "mask_true_token": [
+            "\u2581guitar"
+        ],
+        "mask_pred_token": [
+            "\u2581in"
+        ]
+    },
+    "4": {
+        "input": "The Home Depot was founded in <mask> .",
+        "mask_true_token": [
+            "\u2581Atlanta"
+        ],
+        "mask_pred_token": [
+            "\u25811947"
+        ]
+    },
+    "5": {
+        "input": "The official language of Azad Kashmir is <mask> .",
+        "mask_true_token": [
+            "\u2581Urdu"
+        ],
+        "mask_pred_token": [
+            "\u2581Urdu"
+        ]
+    },
+    "6": {
+        "input": "Chichester Cathedral is named after <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581Trin",
+            "ity"
+        ],
+        "mask_pred_token": [
+            "\u2581the",
+            "\u2581city"
+        ]
+    },
+    "7": {
+        "input": "Juan Carlos Carbonell was born in <mask> .",
+        "mask_true_token": [
+            "\u2581Santiago"
+        ],
+        "mask_pred_token": [
+            "\u2581Barcelona"
+        ]
+    },
+    "8": {
+        "input": "Bobby Darin is represented by music label <mask> <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581Brun",
+            "s",
+            "wick"
+        ],
+        "mask_pred_token": [
+            "s",
+            "\u2581and",
+            "\u2581Records"
+        ]
+    },
+    "9": {
+        "input": "Sadako Sasaki died in <mask> <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581Hir",
+            "oshi",
+            "ma"
+        ],
+        "mask_pred_token": [
+            "\u2581Japan",
+            "-",
+            "."
+        ]
+    },
+    "10": {
+        "input": "Todd Helton plays in <mask> <mask> position .",
+        "mask_true_token": [
+            "\u2581quarter",
+            "back"
+        ],
+        "mask_pred_token": [
+            "\u2581the",
+            "\u2581starting"
+        ]
+    },
+    "11": {
+        "input": "The headquarter of Partisan Records is in <mask> .",
+        "mask_true_token": [
+            "\u2581Brooklyn"
+        ],
+        "mask_pred_token": [
+            "\u2581London"
+        ]
+    },
+    "12": {
+        "input": "Howling Bells was founded in <mask> .",
+        "mask_true_token": [
+            "\u2581Sydney"
+        ],
+        "mask_pred_token": [
+            "\u25811984"
+        ]
+    },
+    "13": {
+        "input": "Missouri shares border with <mask> .",
+        "mask_true_token": [
+            "\u2581Tennessee"
+        ],
+        "mask_pred_token": [
+            "\u2581Texas"
+        ]
+    },
+    "14": {
+        "input": "Tin Machine is represented by music label <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581",
+            "EMI"
+        ],
+        "mask_pred_token": [
+            "s",
+            "\u2581Records"
+        ]
+    },
+    "15": {
+        "input": "The headquarter of Alberta University of the Arts is in <mask> <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581Cal",
+            "gar",
+            "y"
+        ],
+        "mask_pred_token": [
+            "\u2581the",
+            ",",
+            "ville"
+        ]
+    },
+    "16": {
+        "input": "Celtic mythology is a subclass of <mask> <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581my",
+            "th",
+            "ology"
+        ],
+        "mask_pred_token": [
+            "\u2581my",
+            "th",
+            "ology"
+        ]
+    },
+    "17": {
+        "input": "Mustafa Khalil is a <mask> <mask> by profession .",
+        "mask_true_token": [
+            "\u2581politici",
+            "an"
+        ],
+        "mask_pred_token": [
+            "\u2581photograph",
+            "er"
+        ]
+    },
+    "18": {
+        "input": "presbyter is a subclass of <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581pri",
+            "est"
+        ],
+        "mask_pred_token": [
+            "\u2581the",
+            "s"
+        ]
+    },
+    "19": {
+        "input": "mobile app is a subclass of <mask> .",
+        "mask_true_token": [
+            "\u2581application"
+        ],
+        "mask_pred_token": [
+            "\u2581applications"
+        ]
+    },
+    "20": {
+        "input": "Cleator is a <mask> .",
+        "mask_true_token": [
+            "\u2581village"
+        ],
+        "mask_pred_token": [
+            "\u2581..."
+        ]
+    }
+}

@@ -1,0 +1,206 @@
+{
+    "0": {
+        "input": "The national flag of [MASK] is known as Tiranga .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "Madagascar"
+        ]
+    },
+    "1": {
+        "input": "The prime minister of India since 2014 is [MASK] [MASK] [MASK] [MASK] [MASK] .",
+        "mask_true_token": [
+            "Na",
+            "##ren",
+            "##dra",
+            "Mo",
+            "##di"
+        ],
+        "mask_pred_token": [
+            "Na",
+            "##ren",
+            "##dra",
+            "Mo",
+            "##di"
+        ]
+    },
+    "2": {
+        "input": "The capital of India is [MASK] [MASK] .",
+        "mask_true_token": [
+            "New",
+            "Delhi"
+        ],
+        "mask_pred_token": [
+            "New",
+            "Delhi"
+        ]
+    },
+    "3": {
+        "input": "The Indian festival of lights is called [MASK] [MASK] [MASK] .",
+        "mask_true_token": [
+            "Di",
+            "##wal",
+            "##i"
+        ],
+        "mask_pred_token": [
+            "Di",
+            "##wal",
+            "##i"
+        ]
+    },
+    "4": {
+        "input": "The national bird of India is the Indian [MASK] .",
+        "mask_true_token": [
+            "Peacock"
+        ],
+        "mask_pred_token": [
+            "robin"
+        ]
+    },
+    "5": {
+        "input": "The Indian independence day is celebrated on 15th [MASK] .",
+        "mask_true_token": [
+            "August"
+        ],
+        "mask_pred_token": [
+            "January"
+        ]
+    },
+    "6": {
+        "input": "The currency of India is called [MASK] [MASK] [MASK] .",
+        "mask_true_token": [
+            "R",
+            "##upe",
+            "##e"
+        ],
+        "mask_pred_token": [
+            "r",
+            "##upe",
+            "##e"
+        ]
+    },
+    "7": {
+        "input": "The Indian city known as the 'City of Joy' is [MASK] .",
+        "mask_true_token": [
+            "Kolkata"
+        ],
+        "mask_pred_token": [
+            "Lucknow"
+        ]
+    },
+    "8": {
+        "input": "The river considered holy in India is called [MASK] [MASK] .",
+        "mask_true_token": [
+            "Gang",
+            "##es"
+        ],
+        "mask_pred_token": [
+            "Gang",
+            "##es"
+        ]
+    },
+    "9": {
+        "input": "The largest state in India by population is [MASK] [MASK] .",
+        "mask_true_token": [
+            "Uttar",
+            "Pradesh"
+        ],
+        "mask_pred_token": [
+            "Uttar",
+            "Pradesh"
+        ]
+    },
+    "10": {
+        "input": "The president of the United States lives in the [MASK] house .",
+        "mask_true_token": [
+            "white"
+        ],
+        "mask_pred_token": [
+            "White"
+        ]
+    },
+    "11": {
+        "input": "The capital of the United States is [MASK] D.C. .",
+        "mask_true_token": [
+            "Washington"
+        ],
+        "mask_pred_token": [
+            "Washington"
+        ]
+    },
+    "12": {
+        "input": "The American city known as the 'Silicon Valley' is [MASK] .",
+        "mask_true_token": [
+            "California"
+        ],
+        "mask_pred_token": [
+            "California"
+        ]
+    },
+    "13": {
+        "input": "The river that runs through the Grand Canyon is the [MASK] river .",
+        "mask_true_token": [
+            "Colorado"
+        ],
+        "mask_pred_token": [
+            "Colorado"
+        ]
+    },
+    "14": {
+        "input": "The largest state in the United States by area is [MASK] .",
+        "mask_true_token": [
+            "Alaska"
+        ],
+        "mask_pred_token": [
+            "Texas"
+        ]
+    },
+    "15": {
+        "input": "The American space agency is called [MASK] .",
+        "mask_true_token": [
+            "NASA"
+        ],
+        "mask_pred_token": [
+            "NASA"
+        ]
+    },
+    "16": {
+        "input": "The capital of United Kingdom is [MASK] .",
+        "mask_true_token": [
+            "London"
+        ],
+        "mask_pred_token": [
+            "London"
+        ]
+    },
+    "17": {
+        "input": "The headquarters of United Nations Organization (UN) is located at [MASK] [MASK] .",
+        "mask_true_token": [
+            "New",
+            "York"
+        ],
+        "mask_pred_token": [
+            "New",
+            "Headquarters"
+        ]
+    },
+    "18": {
+        "input": "The Eiffel Tower is located at [MASK] .",
+        "mask_true_token": [
+            "Paris"
+        ],
+        "mask_pred_token": [
+            "Paris"
+        ]
+    },
+    "19": {
+        "input": "The most reliable geopolitical partner of India is [MASK] .",
+        "mask_true_token": [
+            "Russia"
+        ],
+        "mask_pred_token": [
+            "China"
+        ]
+    }
+}

@@ -1,0 +1,198 @@
+{
+    "0": {
+        "input": "The national flag of <mask> is known as Tiranga .",
+        "mask_true_token": [
+            "\u2581India"
+        ],
+        "mask_pred_token": [
+            "\u2581India"
+        ]
+    },
+    "1": {
+        "input": "The prime minister of India since 2014 is <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581Narendra",
+            "\u2581Modi"
+        ],
+        "mask_pred_token": [
+            "\u2581Narendra",
+            "\u2581Modi"
+        ]
+    },
+    "2": {
+        "input": "The capital of India is <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581New",
+            "\u2581Delhi"
+        ],
+        "mask_pred_token": [
+            "\u2581New",
+            "\u2581Delhi"
+        ]
+    },
+    "3": {
+        "input": "The Indian festival of lights is called <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581Di",
+            "wali"
+        ],
+        "mask_pred_token": [
+            "\u2581the",
+            "\u2581festival"
+        ]
+    },
+    "4": {
+        "input": "The national bird of India is the Indian <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581Pea",
+            "cock"
+        ],
+        "mask_pred_token": [
+            "\u2581bir",
+            "bird"
+        ]
+    },
+    "5": {
+        "input": "The Indian independence day is celebrated on 15th <mask> .",
+        "mask_true_token": [
+            "\u2581August"
+        ],
+        "mask_pred_token": [
+            "\u2581August"
+        ]
+    },
+    "6": {
+        "input": "The currency of India is called <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581Rup",
+            "ee"
+        ],
+        "mask_pred_token": [
+            "\u2581the",
+            "\u2581Rs"
+        ]
+    },
+    "7": {
+        "input": "The Indian city known as the 'City of Joy' is <mask> .",
+        "mask_true_token": [
+            "\u2581Kolkata"
+        ],
+        "mask_pred_token": [
+            "\u2581here"
+        ]
+    },
+    "8": {
+        "input": "The river considered holy in India is called <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581Gang",
+            "es"
+        ],
+        "mask_pred_token": [
+            "\u2581the",
+            "\u2581river"
+        ]
+    },
+    "9": {
+        "input": "The largest state in India by population is <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581Uttar",
+            "\u2581Pradesh"
+        ],
+        "mask_pred_token": [
+            "\u2581Uttar",
+            "\u2581Pradesh"
+        ]
+    },
+    "10": {
+        "input": "The president of the United States lives in the <mask> house .",
+        "mask_true_token": [
+            "\u2581white"
+        ],
+        "mask_pred_token": [
+            "\u2581white"
+        ]
+    },
+    "11": {
+        "input": "The capital of the United States is <mask> D.C. .",
+        "mask_true_token": [
+            "\u2581Washington"
+        ],
+        "mask_pred_token": [
+            "\u2581Washington"
+        ]
+    },
+    "12": {
+        "input": "The American city known as the 'Silicon Valley' is <mask> .",
+        "mask_true_token": [
+            "\u2581California"
+        ],
+        "mask_pred_token": [
+            "\u2581located"
+        ]
+    },
+    "13": {
+        "input": "The river that runs through the Grand Canyon is the <mask> river .",
+        "mask_true_token": [
+            "\u2581Colorado"
+        ],
+        "mask_pred_token": [
+            "\u2581Colorado"
+        ]
+    },
+    "14": {
+        "input": "The largest state in the United States by area is <mask> .",
+        "mask_true_token": [
+            "\u2581Alaska"
+        ],
+        "mask_pred_token": [
+            "\u2581California"
+        ]
+    },
+    "15": {
+        "input": "The American space agency is called <mask> .",
+        "mask_true_token": [
+            "\u2581NASA"
+        ],
+        "mask_pred_token": [
+            "\u2581NASA"
+        ]
+    },
+    "16": {
+        "input": "The capital of United Kingdom is <mask> .",
+        "mask_true_token": [
+            "\u2581London"
+        ],
+        "mask_pred_token": [
+            "\u2581London"
+        ]
+    },
+    "17": {
+        "input": "The headquarters of United Nations Organization (UN) is located at <mask> <mask> .",
+        "mask_true_token": [
+            "\u2581New",
+            "\u2581York"
+        ],
+        "mask_pred_token": [
+            "\u2581New",
+            "\u2581York"
+        ]
+    },
+    "18": {
+        "input": "The Eiffel Tower is located at <mask> .",
+        "mask_true_token": [
+            "\u2581Paris"
+        ],
+        "mask_pred_token": [
+            "\u2581Paris"
+        ]
+    },
+    "19": {
+        "input": "The most reliable geopolitical partner of India is <mask> .",
+        "mask_true_token": [
+            "\u2581Russia"
+        ],
+        "mask_pred_token": [
+            "\u2581China"
+        ]
+    }
+}
