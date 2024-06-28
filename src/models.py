@@ -115,7 +115,7 @@ def get_mask_token(tokenizer: "tokenizer", predictions_output: dict) -> dict:
     
     return  {"token_ids": predicted_token_id_output, "token": predicted_token_output}
     
-def prepare_dataset(tokenizer: XLMRobertaTokenizer, csv_file_path: Path, num_of_samples: int, is_mlama: bool, is_mbert: bool) -> dict:
+def prepare_dataset(tokenizer: "Tokenizer", csv_file_path: Path, num_of_samples: int, is_mlama: bool, is_mbert: bool) -> dict:
     
     dataframe = pd.read_csv(csv_file_path)
     if is_mlama:

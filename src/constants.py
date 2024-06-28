@@ -1,7 +1,8 @@
 import os
 
 MODELS = [
-    "mbert"
+    "mbert",
+    "xlmr"
 ]
 
 WIKI_URI_ROOT = "/raid/speech/soumen/MS_Research/TracingRootFacts/src/wikidata/urls"

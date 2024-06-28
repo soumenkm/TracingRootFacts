@@ -1,0 +1,191 @@
+{
+    "0": {
+        "input": "Mukhed is located in [MASK] .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "Rajasthan"
+        ]
+    },
+    "1": {
+        "input": "People's Choice Award is a subclass of [MASK] .",
+        "mask_true_token": [
+            "award"
+        ],
+        "mask_pred_token": [
+            "Awards"
+        ]
+    },
+    "2": {
+        "input": "Italy maintains diplomatic relations with [MASK] .",
+        "mask_true_token": [
+            "Pakistan"
+        ],
+        "mask_pred_token": [
+            "Italy"
+        ]
+    },
+    "3": {
+        "input": "Konark Sun temple is located in [MASK] .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "India"
+        ]
+    },
+    "4": {
+        "input": "mayor is part of [MASK] .",
+        "mask_true_token": [
+            "municipality"
+        ],
+        "mask_pred_token": [
+            "mayor"
+        ]
+    },
+    "5": {
+        "input": "National Security Guard is a legal term in [MASK] .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "Defense"
+        ]
+    },
+    "6": {
+        "input": "Koriya district is located in [MASK] .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "India"
+        ]
+    },
+    "7": {
+        "input": "The capital of Dhaka District is [MASK] .",
+        "mask_true_token": [
+            "Dhaka"
+        ],
+        "mask_pred_token": [
+            "Dhaka"
+        ]
+    },
+    "8": {
+        "input": "Gurudwara Bangla Sahib is located in [MASK] .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "town"
+        ]
+    },
+    "9": {
+        "input": "Aguner Poroshmoni was created in [MASK] .",
+        "mask_true_token": [
+            "Bangladesh"
+        ],
+        "mask_pred_token": [
+            "2011"
+        ]
+    },
+    "10": {
+        "input": "Meghe Dhaka Tara was created in [MASK] .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "2011"
+        ]
+    },
+    "11": {
+        "input": "The headquarter of Biman Bangladesh Airlines is in [MASK] .",
+        "mask_true_token": [
+            "Dhaka"
+        ],
+        "mask_pred_token": [
+            "Dhaka"
+        ]
+    },
+    "12": {
+        "input": "Ravi Shankar is [MASK] citizen .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "a"
+        ]
+    },
+    "13": {
+        "input": "Swami Sundaranand was born in [MASK] .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "India"
+        ]
+    },
+    "14": {
+        "input": "Dumka district is located in [MASK] .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "Assam"
+        ]
+    },
+    "15": {
+        "input": "Sangamam was created in [MASK] .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "1971"
+        ]
+    },
+    "16": {
+        "input": "Vice President of India is a legal term in [MASK] .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "India"
+        ]
+    },
+    "17": {
+        "input": "Biwi No.1 was created in [MASK] .",
+        "mask_true_token": [
+            "India"
+        ],
+        "mask_pred_token": [
+            "2012"
+        ]
+    },
+    "18": {
+        "input": "Shironamhin was created in [MASK] .",
+        "mask_true_token": [
+            "Bangladesh"
+        ],
+        "mask_pred_token": [
+            "2012"
+        ]
+    },
+    "19": {
+        "input": "Sialkot district is located in [MASK] .",
+        "mask_true_token": [
+            "Pakistan"
+        ],
+        "mask_pred_token": [
+            "India"
+        ]
+    },
+    "20": {
+        "input": "Germany maintains diplomatic relations with [MASK] .",
+        "mask_true_token": [
+            "Bangladesh"
+        ],
+        "mask_pred_token": [
+            "Germany"
+        ]
+    }
+}

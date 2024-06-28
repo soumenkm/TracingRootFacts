@@ -1,0 +1,911 @@
+{
+    "0": {
+        "input": "Chambal River is located in <mask> .",
+        "mask_true_token": [
+            "▁Asia"
+        ],
+        "mask_pred_token": [
+            "▁India"
+        ]
+    },
+    "1": {
+        "input": "Katharine Furse died in <mask> .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁1994"
+        ]
+    },
+    "2": {
+        "input": "Imarti was created in <mask> .",
+        "mask_true_token": [
+            "▁India"
+        ],
+        "mask_pred_token": [
+            "▁1998"
+        ]
+    },
+    "3": {
+        "input": "Tallinn is located in <mask> .",
+        "mask_true_token": [
+            "▁Europe"
+        ],
+        "mask_pred_token": [
+            "▁Estonia"
+        ]
+    },
+    "4": {
+        "input": "Bangladesh maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Australia"
+        ],
+        "mask_pred_token": [
+            "▁Pakistan"
+        ]
+    },
+    "5": {
+        "input": "Next Eleven consists of <mask> .",
+        "mask_true_token": [
+            "▁Bangladesh"
+        ],
+        "mask_pred_token": [
+            "▁the"
+        ]
+    },
+    "6": {
+        "input": "Emily Henrietta Hickey died in <mask> .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁2008"
+        ]
+    },
+    "7": {
+        "input": "Bolivia maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Brazil"
+        ],
+        "mask_pred_token": [
+            "▁Canada"
+        ]
+    },
+    "8": {
+        "input": "William Smith died in <mask> .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁1945"
+        ]
+    },
+    "9": {
+        "input": "Abd Allah ibn al-Zubayr is affiliated with the <mask> religion .",
+        "mask_true_token": [
+            "▁Islam"
+        ],
+        "mask_pred_token": [
+            "▁Muslim"
+        ]
+    },
+    "10": {
+        "input": "Beijing and <mask> are twin cities .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁Shanghai"
+        ]
+    },
+    "11": {
+        "input": "Andrew Waterman was born in <mask> .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁London"
+        ]
+    },
+    "12": {
+        "input": "European Union maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Brazil"
+        ],
+        "mask_pred_token": [
+            "▁Russia"
+        ]
+    },
+    "13": {
+        "input": "Pauline Joran died in <mask> .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁2009"
+        ]
+    },
+    "14": {
+        "input": "Gibraltar is located in <mask> .",
+        "mask_true_token": [
+            "▁Europe"
+        ],
+        "mask_pred_token": [
+            "▁Europe"
+        ]
+    },
+    "15": {
+        "input": "Shanghai and <mask> are twin cities .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁Beijing"
+        ]
+    },
+    "16": {
+        "input": "Marie Tussaud died in <mask> .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁2005"
+        ]
+    },
+    "17": {
+        "input": "Haseeb Ahsan is <mask> citizen .",
+        "mask_true_token": [
+            "▁Pakistan"
+        ],
+        "mask_pred_token": [
+            "▁US"
+        ]
+    },
+    "18": {
+        "input": "Cape Verde maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁France"
+        ],
+        "mask_pred_token": [
+            "▁Nigeria"
+        ]
+    },
+    "19": {
+        "input": "risk management is a subclass of <mask> .",
+        "mask_true_token": [
+            "▁management"
+        ],
+        "mask_pred_token": [
+            "▁management"
+        ]
+    },
+    "20": {
+        "input": "Great Plague of London is located in <mask> .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁London"
+        ]
+    },
+    "21": {
+        "input": "Seychelles is located in <mask> .",
+        "mask_true_token": [
+            "▁Africa"
+        ],
+        "mask_pred_token": [
+            "▁the"
+        ]
+    },
+    "22": {
+        "input": "Pakistan maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Germany"
+        ],
+        "mask_pred_token": [
+            "▁India"
+        ]
+    },
+    "23": {
+        "input": "Charles Ejogo, Jr. was born in <mask> .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁London"
+        ]
+    },
+    "24": {
+        "input": "Saudi Arabia is located in <mask> .",
+        "mask_true_token": [
+            "▁Asia"
+        ],
+        "mask_pred_token": [
+            "▁Asia"
+        ]
+    },
+    "25": {
+        "input": "Ireland maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Russia"
+        ],
+        "mask_pred_token": [
+            "▁Canada"
+        ]
+    },
+    "26": {
+        "input": "Prafulla Chandra Ghosh is <mask> citizen .",
+        "mask_true_token": [
+            "▁India"
+        ],
+        "mask_pred_token": [
+            "▁Indian"
+        ]
+    },
+    "27": {
+        "input": "Japan National Route 112 is located in <mask> .",
+        "mask_true_token": [
+            "▁Japan"
+        ],
+        "mask_pred_token": [
+            "▁Japan"
+        ]
+    },
+    "28": {
+        "input": "research is part of <mask> .",
+        "mask_true_token": [
+            "▁science"
+        ],
+        "mask_pred_token": [
+            "▁the"
+        ]
+    },
+    "29": {
+        "input": "Willy Brandt works for <mask> .",
+        "mask_true_token": [
+            "▁Germany"
+        ],
+        "mask_pred_token": [
+            "▁me"
+        ]
+    },
+    "30": {
+        "input": "Principality of Sealand is located in <mask> .",
+        "mask_true_token": [
+            "▁Europe"
+        ],
+        "mask_pred_token": [
+            "▁California"
+        ]
+    },
+    "31": {
+        "input": "As-Saffah is affiliated with the <mask> religion .",
+        "mask_true_token": [
+            "▁Islam"
+        ],
+        "mask_pred_token": [
+            "▁Islamic"
+        ]
+    },
+    "32": {
+        "input": "Jordan maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Germany"
+        ],
+        "mask_pred_token": [
+            "▁Israel"
+        ]
+    },
+    "33": {
+        "input": "Shastri Park is located in <mask> .",
+        "mask_true_token": [
+            "▁India"
+        ],
+        "mask_pred_token": [
+            "▁Delhi"
+        ]
+    },
+    "34": {
+        "input": "Canada maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Brazil"
+        ],
+        "mask_pred_token": [
+            "▁Mexico"
+        ]
+    },
+    "35": {
+        "input": "Angola maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Germany"
+        ],
+        "mask_pred_token": [
+            "▁Nigeria"
+        ]
+    },
+    "36": {
+        "input": "Madagascar is located in <mask> .",
+        "mask_true_token": [
+            "▁Africa"
+        ],
+        "mask_pred_token": [
+            "▁Africa"
+        ]
+    },
+    "37": {
+        "input": "Abdullah Quilliam is affiliated with the <mask> religion .",
+        "mask_true_token": [
+            "▁Islam"
+        ],
+        "mask_pred_token": [
+            "▁Christian"
+        ]
+    },
+    "38": {
+        "input": "flag of Australia is a legal term in <mask> .",
+        "mask_true_token": [
+            "▁Australia"
+        ],
+        "mask_pred_token": [
+            "▁Australia"
+        ]
+    },
+    "39": {
+        "input": "United States of America maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Australia"
+        ],
+        "mask_pred_token": [
+            "▁China"
+        ]
+    },
+    "40": {
+        "input": "Khalifa bin Zayed Al Nahyan is affiliated with the <mask> religion .",
+        "mask_true_token": [
+            "▁Islam"
+        ],
+        "mask_pred_token": [
+            "▁Islamic"
+        ]
+    },
+    "41": {
+        "input": "Kingdom of the Netherlands shares border with <mask> .",
+        "mask_true_token": [
+            "▁France"
+        ],
+        "mask_pred_token": [
+            "▁Israel"
+        ]
+    },
+    "42": {
+        "input": "Hundred Years' War is located in <mask> .",
+        "mask_true_token": [
+            "▁France"
+        ],
+        "mask_pred_token": [
+            "▁London"
+        ]
+    },
+    "43": {
+        "input": "Security Council of Russia is a legal term in <mask> .",
+        "mask_true_token": [
+            "▁Russia"
+        ],
+        "mask_pred_token": [
+            "▁Russian"
+        ]
+    },
+    "44": {
+        "input": "Amarkantak is located in <mask> .",
+        "mask_true_token": [
+            "▁India"
+        ],
+        "mask_pred_token": [
+            "▁India"
+        ]
+    },
+    "45": {
+        "input": "Thomas Wroth was born in <mask> .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁London"
+        ]
+    },
+    "46": {
+        "input": "Priyanandanan is <mask> citizen .",
+        "mask_true_token": [
+            "▁India"
+        ],
+        "mask_pred_token": [
+            "▁a"
+        ]
+    },
+    "47": {
+        "input": "Gopaldas Neeraj is <mask> citizen .",
+        "mask_true_token": [
+            "▁India"
+        ],
+        "mask_pred_token": [
+            "▁Indian"
+        ]
+    },
+    "48": {
+        "input": "Umar II is affiliated with the <mask> religion .",
+        "mask_true_token": [
+            "▁Islam"
+        ],
+        "mask_pred_token": [
+            "▁Muslim"
+        ]
+    },
+    "49": {
+        "input": "Higashikagawa is located in <mask> .",
+        "mask_true_token": [
+            "▁Japan"
+        ],
+        "mask_pred_token": [
+            "▁Japan"
+        ]
+    },
+    "50": {
+        "input": "Sharmila Tagore is affiliated with the <mask> religion .",
+        "mask_true_token": [
+            "▁Islam"
+        ],
+        "mask_pred_token": [
+            "▁Hindu"
+        ]
+    },
+    "51": {
+        "input": "Singapore maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Australia"
+        ],
+        "mask_pred_token": [
+            "▁China"
+        ]
+    },
+    "52": {
+        "input": "Battle of Plassey is located in <mask> .",
+        "mask_true_token": [
+            "▁Kolkata"
+        ],
+        "mask_pred_token": [
+            "▁England"
+        ]
+    },
+    "53": {
+        "input": "Abkhazia shares border with <mask> .",
+        "mask_true_token": [
+            "▁Russia"
+        ],
+        "mask_pred_token": [
+            "▁Israel"
+        ]
+    },
+    "54": {
+        "input": "Guatemala maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Germany"
+        ],
+        "mask_pred_token": [
+            "▁Mexico"
+        ]
+    },
+    "55": {
+        "input": "Samuel Taylor Coleridge died in <mask> .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁1994"
+        ]
+    },
+    "56": {
+        "input": "Khasavyurt is located in <mask> .",
+        "mask_true_token": [
+            "▁Russia"
+        ],
+        "mask_pred_token": [
+            "▁Turkey"
+        ]
+    },
+    "57": {
+        "input": "Google Earth is developed by <mask> .",
+        "mask_true_token": [
+            "▁Google"
+        ],
+        "mask_pred_token": [
+            "▁Google"
+        ]
+    },
+    "58": {
+        "input": "H. P. Lovecraft is a <mask> by profession .",
+        "mask_true_token": [
+            "▁journalist"
+        ],
+        "mask_pred_token": [
+            "▁poet"
+        ]
+    },
+    "59": {
+        "input": "Turkey is located in <mask> .",
+        "mask_true_token": [
+            "▁Asia"
+        ],
+        "mask_pred_token": [
+            "▁Asia"
+        ]
+    },
+    "60": {
+        "input": "Luxembourg maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁France"
+        ],
+        "mask_pred_token": [
+            "▁Canada"
+        ]
+    },
+    "61": {
+        "input": "Husayn ibn Ali is affiliated with the <mask> religion .",
+        "mask_true_token": [
+            "▁Islam"
+        ],
+        "mask_pred_token": [
+            "▁Muslim"
+        ]
+    },
+    "62": {
+        "input": "Asia shares border with <mask> .",
+        "mask_true_token": [
+            "▁Africa"
+        ],
+        "mask_pred_token": [
+            "▁China"
+        ]
+    },
+    "63": {
+        "input": "Emperor of Japan is a legal term in <mask> .",
+        "mask_true_token": [
+            "▁Japan"
+        ],
+        "mask_pred_token": [
+            "▁Japan"
+        ]
+    },
+    "64": {
+        "input": "Cat Stevens is affiliated with the <mask> religion .",
+        "mask_true_token": [
+            "▁Islam"
+        ],
+        "mask_pred_token": [
+            "▁Christian"
+        ]
+    },
+    "65": {
+        "input": "States Reorganisation Act, 1956 is a legal term in <mask> .",
+        "mask_true_token": [
+            "▁India"
+        ],
+        "mask_pred_token": [
+            "▁the"
+        ]
+    },
+    "66": {
+        "input": "Italy maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Pakistan"
+        ],
+        "mask_pred_token": [
+            "▁Spain"
+        ]
+    },
+    "67": {
+        "input": "Ibn Arabi is affiliated with the <mask> religion .",
+        "mask_true_token": [
+            "▁Islam"
+        ],
+        "mask_pred_token": [
+            "▁Muslim"
+        ]
+    },
+    "68": {
+        "input": "Picasa is developed by <mask> .",
+        "mask_true_token": [
+            "▁Google"
+        ],
+        "mask_pred_token": [
+            "▁Google"
+        ]
+    },
+    "69": {
+        "input": "United Kingdom maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Germany"
+        ],
+        "mask_pred_token": [
+            "▁China"
+        ]
+    },
+    "70": {
+        "input": "Allies consists of <mask> .",
+        "mask_true_token": [
+            "▁France"
+        ],
+        "mask_pred_token": [
+            "▁the"
+        ]
+    },
+    "71": {
+        "input": "Brazil maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Germany"
+        ],
+        "mask_pred_token": [
+            "▁Mexico"
+        ]
+    },
+    "72": {
+        "input": "Central African Republic maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Russia"
+        ],
+        "mask_pred_token": [
+            "▁Nigeria"
+        ]
+    },
+    "73": {
+        "input": "Bhutan maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Germany"
+        ],
+        "mask_pred_token": [
+            "▁Pakistan"
+        ]
+    },
+    "74": {
+        "input": "Ibn Ishaq is affiliated with the <mask> religion .",
+        "mask_true_token": [
+            "▁Islam"
+        ],
+        "mask_pred_token": [
+            "▁Christian"
+        ]
+    },
+    "75": {
+        "input": "Argentina shares border with <mask> .",
+        "mask_true_token": [
+            "▁Brazil"
+        ],
+        "mask_pred_token": [
+            "▁Mexico"
+        ]
+    },
+    "76": {
+        "input": "Rod Anderson was born in <mask> .",
+        "mask_true_token": [
+            "▁Australia"
+        ],
+        "mask_pred_token": [
+            "▁London"
+        ]
+    },
+    "77": {
+        "input": "Turkey maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Australia"
+        ],
+        "mask_pred_token": [
+            "▁Iran"
+        ]
+    },
+    "78": {
+        "input": "Stephen Colbert is a <mask> by profession .",
+        "mask_true_token": [
+            "▁journalist"
+        ],
+        "mask_pred_token": [
+            "▁journalist"
+        ]
+    },
+    "79": {
+        "input": "Michael Armstrong was born in <mask> .",
+        "mask_true_token": [
+            "▁France"
+        ],
+        "mask_pred_token": [
+            "▁London"
+        ]
+    },
+    "80": {
+        "input": "Guido van Rossum works for <mask> .",
+        "mask_true_token": [
+            "▁Google"
+        ],
+        "mask_pred_token": [
+            "▁Google"
+        ]
+    },
+    "81": {
+        "input": "Greece maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Germany"
+        ],
+        "mask_pred_token": [
+            "▁Turkey"
+        ]
+    },
+    "82": {
+        "input": "Luxembourg maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Germany"
+        ],
+        "mask_pred_token": [
+            "▁Canada"
+        ]
+    },
+    "83": {
+        "input": "Johnny Mowlem was born in <mask> .",
+        "mask_true_token": [
+            "▁London"
+        ],
+        "mask_pred_token": [
+            "▁London"
+        ]
+    },
+    "84": {
+        "input": "wahy is affiliated with the <mask> religion .",
+        "mask_true_token": [
+            "▁Islam"
+        ],
+        "mask_pred_token": [
+            "▁Christian"
+        ]
+    },
+    "85": {
+        "input": "Bhutan maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Brazil"
+        ],
+        "mask_pred_token": [
+            "▁Pakistan"
+        ]
+    },
+    "86": {
+        "input": "Afghanistan maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Germany"
+        ],
+        "mask_pred_token": [
+            "▁Pakistan"
+        ]
+    },
+    "87": {
+        "input": "mass is part of <mask> .",
+        "mask_true_token": [
+            "▁force"
+        ],
+        "mask_pred_token": [
+            "▁the"
+        ]
+    },
+    "88": {
+        "input": "Senegal maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Australia"
+        ],
+        "mask_pred_token": [
+            "▁Iran"
+        ]
+    },
+    "89": {
+        "input": "Tokyo is the capital of <mask> .",
+        "mask_true_token": [
+            "▁Japan"
+        ],
+        "mask_pred_token": [
+            "▁Japan"
+        ]
+    },
+    "90": {
+        "input": "Egypt maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Russia"
+        ],
+        "mask_pred_token": [
+            "▁Israel"
+        ]
+    },
+    "91": {
+        "input": "Don 2 was created in <mask> .",
+        "mask_true_token": [
+            "▁India"
+        ],
+        "mask_pred_token": [
+            "▁2012"
+        ]
+    },
+    "92": {
+        "input": "Tonga maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Australia"
+        ],
+        "mask_pred_token": [
+            "▁Australia"
+        ]
+    },
+    "93": {
+        "input": "Jalaluddin Muhammad Shah is affiliated with the <mask> religion .",
+        "mask_true_token": [
+            "▁Islam"
+        ],
+        "mask_pred_token": [
+            "▁Hindu"
+        ]
+    },
+    "94": {
+        "input": "Google Map Maker is owned by <mask> .",
+        "mask_true_token": [
+            "▁Google"
+        ],
+        "mask_pred_token": [
+            "▁Google"
+        ]
+    },
+    "95": {
+        "input": "Koriya district is located in <mask> .",
+        "mask_true_token": [
+            "▁India"
+        ],
+        "mask_pred_token": [
+            "▁India"
+        ]
+    },
+    "96": {
+        "input": "Pisharoth Rama Pisharoty is <mask> citizen .",
+        "mask_true_token": [
+            "▁India"
+        ],
+        "mask_pred_token": [
+            "▁a"
+        ]
+    },
+    "97": {
+        "input": "Romania maintains diplomatic relations with <mask> .",
+        "mask_true_token": [
+            "▁Australia"
+        ],
+        "mask_pred_token": [
+            "▁Turkey"
+        ]
+    },
+    "98": {
+        "input": "Flattened rice is a <mask> .",
+        "mask_true_token": [
+            "▁rice"
+        ],
+        "mask_pred_token": [
+            "▁good"
+        ]
+    },
+    "99": {
+        "input": "Bihar is located in <mask> .",
+        "mask_true_token": [
+            "▁Asia"
+        ],
+        "mask_pred_token": [
+            "▁India"
+        ]
+    },
+    "100": {
+        "input": "Austria-Hungary is located in <mask> .",
+        "mask_true_token": [
+            "▁Europe"
+        ],
+        "mask_pred_token": [
+            "▁Europe"
+        ]
+    }
+}
