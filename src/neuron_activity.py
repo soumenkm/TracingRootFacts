@@ -110,7 +110,9 @@ def get_binned_activation(model_outputs: dict) -> torch.tensor:
         item = torch.split(layer_activations, d//num_bins, dim=0)
         binned_activations.append([i.mean().item() for i in item])
     
-    return torch.nn.functional.sigmoid(torch.tensor(binned_activations))
+    binned_activations = torch.tensor(binned_activations)
+    binned_activations = binned_activations - binned_activations.min() / (binned_activations.max() - binned_activations.min())
+    return binned_activations
 
 def plot_activation(binned_activations: torch.tensor, lang: str) -> None:
     
