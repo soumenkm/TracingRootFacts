@@ -4,3 +4,5 @@ datasets
 result
 tmp*
 outputs/act
+outputs/.cache
+output.txt
