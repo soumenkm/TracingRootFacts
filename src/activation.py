@@ -10,6 +10,8 @@ from transformers import BertTokenizer, XLMRobertaTokenizer
 from mask_dataset import MaskedDataset
 from langcodes import Language
 from itertools import combinations
+import matplotlib.colors as mcolors
+random.seed(42)
 
 class Activation:
     
@@ -97,7 +99,7 @@ class Activation:
         
         return data_dict 
     
-    def get_activity(self, data_dict: dict, fact_uuid: str) -> torch.tensor:
+    def get_activity(self, data_dict: dict, fact_uuid: str, is_right_only: bool = False) -> Tuple[torch.tensor, int]:
         
         act = torch.stack(data_dict[fact_uuid][self.output_type], dim=0) # (L, d)
         rel = data_dict[fact_uuid]["rel_uri"]
@@ -105,16 +107,22 @@ class Activation:
         act_list = []
         for uuid, val in data_dict.items():
             if type(val) is not str:
-                if val["rel_uri"] == rel:
+                if is_right_only:
+                    criteria = (val["rel_uri"] == rel) and (bool(val["is_match"]) == True)
+                else:
+                    criteria = (val["rel_uri"] == rel) 
+                    
+                if criteria:
                     act_list.append(torch.stack(val[self.output_type], dim=0)) # List[R x (L, d)]
                     
         act_rel_tensor = torch.stack(act_list, dim=0) # (R, L, d)
+        R = act_rel_tensor.shape[0]
         act_rel_tensor = act_rel_tensor.transpose(0, 1) # (L, R, d)
         act_rel_tensor = act_rel_tensor.mean(dim=1) # (L, d)
         
         activity = torch.abs(act_rel_tensor - act) # (L, d)
         
-        return activity
+        return activity, R
 
     def get_binned_activity(self, act_data: torch.tensor) -> torch.tensor:
         
@@ -130,10 +138,10 @@ class Activation:
         
         return binned_act
     
-    def plot_activity(self, lang: str, fact_uuid: str):
+    def plot_activity(self, lang: str, fact_uuid: str) -> torch.tensor:
 
         data_dict = self.load_pkl_activation_file(lang=lang)
-        act_data = self.get_activity(data_dict=data_dict, fact_uuid=fact_uuid) # (L, d)
+        act_data, R = self.get_activity(data_dict=data_dict, fact_uuid=fact_uuid) # (L, d)
         binned_act = self.get_binned_activity(act_data=act_data) # (L, num_bins)
         L = binned_act.shape[0]
         
@@ -146,14 +154,21 @@ class Activation:
         
         example = self.mlama_dataset.uuid_info_all_lang[fact_uuid]["en"]["rel"].replace("[X]", 
             str(self.mlama_dataset.uuid_info_all_lang[fact_uuid]["en"]["sub"]))
-        title = ('Neuron Activity Pattern for Fact Translated to Lang: ' + str(Language.get(lang).display_name()) + 
-                 f'\nFact: {example}')
+        title = (f'Neuron Activity Pattern for Fact Translated to Lang: ' + str(Language.get(lang).display_name()) + 
+                 f'\nFact: {example}' + f"\nAvg over {R} triplets of same relation having both right and wrong predictions")
         plt.title(title)
         plt.savefig(str(Path(self.heatmap_dir, f"{lang}_{fact_uuid}_activity_heatmap.png")), dpi=300)
-    
-    def plot_activity_for_2_lang(self, lang1: str, lang2: str):
         
-        save_dir = Path(self.heatmap_dir, f"{lang1}_{lang2}")
+        return binned_act
+    
+    def plot_activity_for_2_lang(self, lang1: str, lang2: str, is_right_only: bool = False):
+        
+        if is_right_only:
+            save_dir = Path(self.heatmap_dir.parent, f"{self.name}_right_only")
+        else:
+            save_dir = self.heatmap_dir
+            
+        save_dir = Path(save_dir, f"{lang1}_{lang2}")
         save_dir.mkdir(exist_ok=True)
         
         if lang1 in self.cache_data_dict.keys():
@@ -169,23 +184,29 @@ class Activation:
         uuid_list = []
         for uuid, val in self.mlama_dataset.uuid_info_all_lang.items():
             if (lang1 in val.keys()) and (lang2 in val.keys()):
-                if data_dict1[uuid]["is_match"] == data_dict2[uuid]["is_match"]:
+                if (data_dict1[uuid]["is_match"] == True) and (data_dict2[uuid]["is_match"] == True):
                     if "en" in self.mlama_dataset.uuid_info_all_lang[uuid].keys():
                         uuid_list.append(uuid)
         
-        for fact_uuid in random.sample(uuid_list, k=min(50, len(uuid_list))):
-            act_data1 = self.get_activity(data_dict=data_dict1, fact_uuid=fact_uuid) # (L, d)
+        # for fact_uuid in random.sample(uuid_list, k=min(50, len(uuid_list))):
+        for fact_uuid in uuid_list[:10]:
+            if is_right_only:
+                type_pred = "only right" 
+            else:
+                type_pred = "both right and wrong"
+                
+            act_data1, R1 = self.get_activity(data_dict=data_dict1, fact_uuid=fact_uuid, is_right_only=is_right_only) # (L, d)
             binned_act1 = self.get_binned_activity(act_data=act_data1) # (L, num_bins)
-            act_data2 = self.get_activity(data_dict=data_dict2, fact_uuid=fact_uuid) # (L, d)
+            act_data2, R2 = self.get_activity(data_dict=data_dict2, fact_uuid=fact_uuid, is_right_only=is_right_only) # (L, d)
             binned_act2 = self.get_binned_activity(act_data=act_data2) # (L, num_bins)
             
             L = binned_act1.shape[0]
-            fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+            fig, axes = plt.subplots(1, 3, figsize=(24, 10))
 
             # First language
             ax1 = axes[0]
             im1 = ax1.imshow(binned_act1.cpu(), aspect='auto', cmap='viridis_r')
-            ax1.set_title(f'Language 1: {Language.get(lang1).display_name()}')
+            ax1.set_title(f'Language 1: {Language.get(lang1).display_name()}, R = {R1} triplets')
             ax1.set_xlabel('Bins')
             ax1.set_ylabel('Transformer Layers (0: bottom)')
             ax1.set_yticks(ticks=range(L))
@@ -195,42 +216,44 @@ class Activation:
             # Second language
             ax2 = axes[1]
             im2 = ax2.imshow(binned_act2.cpu(), aspect='auto', cmap='viridis_r')
-            ax2.set_title(f'Language 2: {Language.get(lang2).display_name()}')
+            ax2.set_title(f'Language 2: {Language.get(lang2).display_name()} , R = {R2} triplets')
             ax2.set_xlabel('Bins')
             ax2.set_ylabel('Transformer Layers (0: bottom)')
             ax2.set_yticks(ticks=range(L))
             ax2.set_yticklabels(reversed(range(L)))
             fig.colorbar(im2, ax=ax2, label='Activation Value')
+            
+            # Absolute difference
+            ax3 = axes[2]
+            abs_diff = torch.abs(binned_act1 - binned_act2)
+            custom_cmap = mcolors.ListedColormap(['darkgreen', 'green', 'limegreen', 'palegreen', 'gold', 'orange', 'darkorange', 'red'])
+            bounds = [0, 0.01, 0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0]
+            norm = mcolors.BoundaryNorm(bounds, custom_cmap.N)
+
+            im3 = ax3.imshow(abs_diff.cpu(), aspect='auto', cmap=custom_cmap, norm=norm)
+            ax3.set_title('Absolute Difference')
+            ax3.set_xlabel('Bins')
+            ax3.set_ylabel('Transformer Layers (0: bottom)')
+            ax3.set_yticks(ticks=range(L))
+            ax3.set_yticklabels(reversed(range(L)))
+            fig.colorbar(im3, ax=ax3, label='Activation Value')
 
             example = self.mlama_dataset.uuid_info_all_lang[fact_uuid]["en"]["rel"].replace("[X]", 
                 str(self.mlama_dataset.uuid_info_all_lang[fact_uuid]["en"]["sub"]))
             title = (f'Neuron Activity Pattern for Fact Translated to Lang: {Language.get(lang1).display_name()} and {Language.get(lang2).display_name()}' + 
-                    f'\nFact in English: {example}')
+                    f'\nFact in English: {example}' + f"\nAvg over R triplets of same relation having {type_pred} predictions")
             plt.suptitle(title)
             plt.tight_layout()
             plt.savefig(str(Path(save_dir, f"{fact_uuid}_activity_heatmap.png")), dpi=300)
             plt.close()
             
-    def probeless(self, data_dict: dict, lang: str, fact_uuid_list: List[str], layer: int, num_rank: int=50, is_activity: bool=True) -> torch.tensor:
-        
-        layer_act_list = []
-        label_list = []
-        for fact_uuid in fact_uuid_list:
-            if is_activity:
-                act_data = self.get_activity(data_dict=data_dict, fact_uuid=fact_uuid) # (L, d)
-            else:
-                act_data = data_dict[fact_uuid][self.output_type] # List[L x (d,)]
-         
-            layer_act = act_data[layer] # (d,)
-            label = data_dict[fact_uuid]["obj"]
-            layer_act_list.append(layer_act) # List[N x (d,)]
-            label_list.append(label)
-        
+    def get_ranking_by_probeless(self, label_list: List[str], layer_act_list: List[torch.tensor], num_rank: int = 50) -> torch.tensor:
+            
         unique_labels = set(label_list)
         mean_act_dict = {}
         for label in unique_labels:
             index_list = [i for i, l in enumerate(label_list) if l == label]
-            q = torch.stack([layer_act_list[i] for i in index_list], dim=0).mean(dim=0) # (Ni, d) -> (d,)
+            q = torch.stack([layer_act_list[i] for i in index_list], dim=0).mean(dim=0) # (Ni, L, d) -> (L, d)
             mean_act_dict[label] = {"q": q, "Ni": len(index_list)}
         
         sum_of_diff = []
@@ -239,11 +262,67 @@ class Activation:
             q2 = mean_act_dict[z2]["q"]
             sum_of_diff.append(torch.abs(q1-q2))
             
-        r = torch.stack(sum_of_diff).sum(dim=0) # (d,)
-        ranking = r.argsort()[:num_rank] # (num_rank,)
+        r = torch.stack(sum_of_diff).sum(dim=0) # (N, L, d) ->  (L, d)
+        ranking = r.sort(dim=-1)[-1][:, :num_rank] # (L, num_rank)
         
         return ranking
-      
+    
+    def measure_cross_lingual_fact_rep(self, lang1: str, lang2: str) -> List[float]:
+        
+        if lang1 in self.cache_data_dict.keys():
+            data_dict1 = self.cache_data_dict[lang1]
+        else:
+            data_dict1 = self.load_pkl_activation_file(lang=lang1)
+            
+        if lang2 in self.cache_data_dict.keys():
+            data_dict2 = self.cache_data_dict[lang2]
+        else:
+            data_dict2 = self.load_pkl_activation_file(lang=lang2)
+        
+        uuid_list = []
+        layer_act_list1 = []
+        layer_act_list2 = []
+        label_list1 = []
+        label_list2 = []
+        c = 0
+        
+        for uuid, val in self.mlama_dataset.uuid_info_all_lang.items():
+            if (lang1 in val.keys()) and (lang2 in val.keys()):
+                if data_dict1[uuid]["is_match"] == data_dict2[uuid]["is_match"]:
+                    act_data1 = self.get_activity(data_dict=data_dict1, fact_uuid=uuid) # (L, d)
+                    act_data2 = self.get_activity(data_dict=data_dict2, fact_uuid=uuid) # (L, d)
+                    
+                    binned_act1 = self.get_binned_activity(act_data=act_data1) # (L, num_bins)
+                    binned_act2 = self.get_binned_activity(act_data=act_data2) # (L, num_bins)
+                    binned_act_diff = torch.abs(binned_act1 - binned_act2) # (L, num_bins)
+                    
+                    criteria1 = (binned_act_diff < 0.05).to(torch.float32).mean().item()
+                    criteria2 = (binned_act_diff < 0.1).to(torch.float32).mean().item()
+                    criteria3 = (binned_act_diff < 0.5).to(torch.float32).mean().item()
+                    
+                    if (criteria1 > 0.5) and (criteria2 > 0.75) and (criteria3 > 0.90):
+                        print(c)
+                        c += 1
+                        uuid_list.append(uuid)
+                        
+                        label1 = data_dict1[uuid]["obj"]
+                        layer_act_list1.append(act_data1) # List[N x (L, d)]
+                        label_list1.append(label1)
+                        
+                        label2 = data_dict2[uuid]["obj"]
+                        layer_act_list2.append(act_data2) # List[N x (L, d)]
+                        label_list2.append(label2)
+        
+        rank1 = self.get_ranking_by_probeless(label_list=label_list1, layer_act_list=layer_act_list1) # (L, num_rank)
+        rank2 = self.get_ranking_by_probeless(label_list=label_list2, layer_act_list=layer_act_list2) # (L, num_rank)
+        
+        jac_sim_list = []
+        for i in range(rank1.shape[0]):
+            jac_sim = len(set(rank1[i,:]).intersection(set(rank2[i,:]))) / len(set(rank1[i,:]).union(set(rank2[i,:])))
+            jac_sim_list.append(jac_sim)
+        
+        return jac_sim_list
+           
 def main(model_name: str, device: torch.device):
        
     if "bert-" in model_name:
@@ -260,15 +339,19 @@ def main(model_name: str, device: torch.device):
     mlama_dataset = MaskedDataset()
     activation = Activation(device=device, mlama_dataset=mlama_dataset, tokenizer=tokenizer, model=model, name=name)
     
-    for lang1, lang2 in zip(["bn", "en", "en", "es", "hi", "en", "en", "id", "en", "en"], 
-                            ["hi", "nl", "de", "pt", "ur", "bn", "af", "ms", "ja", "ru"]):
-        activation.plot_activity_for_2_lang(lang1=lang1, lang2=lang2)
-    # activation.plot_activity(lang="bn", fact_uuid="5a385050-7233-4e81-9776-c3226669ca8b")
-    # jac_sim = activation.get_jaccard_sim_for_shared_facts(lang1="bn", lang2="hi")
-    # print(jac_sim)
+    # for lang1, lang2 in zip(["bn", "en", "en", "es", "hi", "en", "en", "id", "en", "en"], 
+    #                         ["hi", "nl", "de", "pt", "ur", "bn", "af", "ms", "ja", "ru"]):
+    #     activation.plot_activity_for_2_lang(lang1=lang1, lang2=lang2, is_right_only=True)
+    # a = activation.plot_activity(lang="ms", fact_uuid="b73bf6c6-3468-4ab8-9f4d-3c6e28259f07")
+    # b = activation.plot_activity(lang="id", fact_uuid="b73bf6c6-3468-4ab8-9f4d-3c6e28259f07")
+    # activation.plot_activity_for_2_lang(lang1="de", lang2="en")
+    # activation.plot_activity_for_2_lang(lang1="nl", lang2="en")
+    # jac_sim_list = activation.measure_cross_lingual_fact_rep(lang1="id", lang2="ms")
+    # print(jac_sim_list)
+    
     
 if __name__ == "__main__":
-    cuda_ids = [3]
+    cuda_ids = [4]
     cvd = ""
     for i in cuda_ids:
         cvd += str(i) + ","
