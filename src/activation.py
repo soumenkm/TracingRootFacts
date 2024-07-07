@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-from models import BertModelForProbing, XLMRobertaModelForProbing
+from encoder_models import BertModelForProbing, XLMRobertaModelForProbing
 from transformers import BertTokenizer, XLMRobertaTokenizer
 from mask_dataset import MaskedDataset
 from langcodes import Language
