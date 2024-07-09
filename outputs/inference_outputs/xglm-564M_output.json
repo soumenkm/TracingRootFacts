@@ -1,0 +1,30 @@
+{
+    "0": {
+        "prompt": "The capital of the USA is ",
+        "output": "The capital of the USA is the United States."
+    },
+    "1": {
+        "prompt": "The capital of the USA is <mask>",
+        "output": "The capital of the USA is <mask>, and the capital of the world is <mask>."
+    },
+    "2": {
+        "prompt": "The capital of the <mask> is Washington, D.C.",
+        "output": "The capital of the <mask> is Washington, D.C."
+    },
+    "3": {
+        "prompt": "Input: 'The capital of the USA is <mask>.'\nMasked output: ",
+        "output": "Input: 'The capital of the USA is <mask>.' Masked output: 'The capital of the USA is <mask>.'"
+    },
+    "4": {
+        "prompt": "Predict the masked output.\nInput: 'The capital of the USA is <mask>.'\nMasked output: ",
+        "output": "Predict the masked output. Input: 'The capital of the USA is <mask>.' Masked output: 'The capital of the USA is <mask>.'"
+    },
+    "5": {
+        "prompt": "Input: 'The capital of the <mask> is Washington, D.C.'\nMasked output: ",
+        "output": "Input: 'The capital of the <mask> is Washington, D.C.' Masked output: 'The capital of the <mask> is Washington, D.C.'"
+    },
+    "6": {
+        "prompt": "Predict the masked output.\nInput: 'The capital of the <mask> is Washington, D.C.'\nMasked output: ",
+        "output": "Predict the masked output. Input: 'The capital of the <mask> is Washington, D.C.' Masked output: 'The capital of the <mask> is Washington, D.C.'"
+    }
+}

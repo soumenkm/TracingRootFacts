@@ -1,12 +1,5 @@
-# prompt = "Hey, are you conscious? Can you talk to me?"
-# inputs = tokenizer(prompt, return_tensors="pt").to(device)
-
-# # Generate
-# generate_ids = model.generate(inputs.input_ids, max_length=30)
-# print(tokenizer.batch_decode(generate_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0])
-
-import torch, torchinfo, json
-from transformers import AutoTokenizer, LlamaForCausalLM, XGLMForCausalLM 
+import torch, torchinfo, json, os
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from typing import List, Tuple
 import pandas as pd
 from pathlib import Path
@@ -144,10 +137,37 @@ def main(model_name: str, is_mlama: bool) -> None:
     json.dump(out_dict, open(f"outputs/{dataset_name}_{model_name}_prediction.json","w"), indent=4)
        
 if __name__ == "__main__":
+    os.environ["CUDA_VISIBLE_DEVICES"] = "4"
+    models = ["facebook/xglm-564M", "meta-llama/Llama-2-7b-hf", "mistralai/Mixtral-8x7B-v0.1"]
+    model_id = 1
+    tokenizer = AutoTokenizer.from_pretrained(models[model_id])
+    if model_id == 0:
+        model = AutoModelForCausalLM.from_pretrained(models[model_id]).to("cuda")
+        name = "xglm-564M"
+    elif model_id == 1:
+        model = AutoModelForCausalLM.from_pretrained(models[model_id]).to("cuda")
+        name = "llama2-7B"
+    elif model_id == 2:
+        quantization_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16)
+        model = AutoModelForCausalLM.from_pretrained(models[model_id], quantization_config=quantization_config)
+        name = "mixtral8x7B-Q4"
+    prompt_list = [
+        "The capital of the USA is ",
+        "The capital of the USA is <mask>",
+        "The capital of the <mask> is Washington, D.C.",
+        "Input: 'The capital of the USA is <mask>.'\nMasked output: ",
+        "Predict the masked output.\nInput: 'The capital of the USA is <mask>.'\nMasked output: ",
+        "Input: 'The capital of the <mask> is Washington, D.C.'\nMasked output: ",
+        "Predict the masked output.\nInput: 'The capital of the <mask> is Washington, D.C.'\nMasked output: ",    
+    ] 
+    output_dict = {}   
+    for i, prompt in enumerate(prompt_list):
     
-    models = ["facebook/xglm-564M", "meta-llama/Llama-2-7b-hf"]
+        inputs = {k: v.to("cuda") for k, v in tokenizer([prompt], return_tensors="pt").items()}
+        gen_ids = model.generate(**inputs, max_new_tokens=20)
+        outputs = tokenizer.batch_decode(gen_ids, skip_special_tokens=True)[0]
+
+        output_dict[i] = {"prompt": prompt, "output": outputs}
     
-    for model_name in models:
-        main(model_name=model_name, is_mlama=True)
-    for model_name in models:
-        main(model_name=model_name, is_mlama=False)
+    json.dump(output_dict, open(f"{name}_output.json", "w"), indent=4)
+    

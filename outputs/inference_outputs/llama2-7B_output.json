@@ -1,0 +1,30 @@
+{
+    "0": {
+        "prompt": "The capital of the USA is ",
+        "output": "The capital of the USA is 2,500 miles away from the nearest beach.\nIn the world's biggest country"
+    },
+    "1": {
+        "prompt": "The capital of the USA is <mask>",
+        "output": "The capital of the USA is <mask>Washington</mask>, the capital of the Russian Federation is <mask>Moscow</mask"
+    },
+    "2": {
+        "prompt": "The capital of the <mask> is Washington, D.C.",
+        "output": "The capital of the <mask> is Washington, D.C.\nThe capital of the <mask> is Washington, D.C..\nThe capital of the"
+    },
+    "3": {
+        "prompt": "Input: 'The capital of the USA is <mask>.'\nMasked output: ",
+        "output": "Input: 'The capital of the USA is <mask>.'\nMasked output: 1\n\nInput: 'The capital of the USA is <mask>.'\nMasked output"
+    },
+    "4": {
+        "prompt": "Predict the masked output.\nInput: 'The capital of the USA is <mask>.'\nMasked output: ",
+        "output": "Predict the masked output.\nInput: 'The capital of the USA is <mask>.'\nMasked output:  Washington\nMasked output:  Washington, DC\nInput: 'The capital of the USA is"
+    },
+    "5": {
+        "prompt": "Input: 'The capital of the <mask> is Washington, D.C.'\nMasked output: ",
+        "output": "Input: 'The capital of the <mask> is Washington, D.C.'\nMasked output:  'The capital of the United States is Washington, D.C.'\n\nInput: 'The"
+    },
+    "6": {
+        "prompt": "Predict the masked output.\nInput: 'The capital of the <mask> is Washington, D.C.'\nMasked output: ",
+        "output": "Predict the masked output.\nInput: 'The capital of the <mask> is Washington, D.C.'\nMasked output: 3\nOutput: 'The capital of the Washington, D.C. is Washington, D."
+    }
+}

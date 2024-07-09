@@ -1,0 +1,30 @@
+{
+    "0": {
+        "prompt": "The capital of the USA is ",
+        "output": "The capital of the USA is 100% worth a visit. Washington DC is a city full of history and culture. It"
+    },
+    "1": {
+        "prompt": "The capital of the USA is <mask>",
+        "output": "The capital of the USA is <mask>\n\nThe capital of the USA is Washington.\n\nThe capital of the USA is Washington,"
+    },
+    "2": {
+        "prompt": "The capital of the <mask> is Washington, D.C.",
+        "output": "The capital of the <mask> is Washington, D.C.\n\nThe capital of the <mask> is Washington, D.C.\n\nThe capital"
+    },
+    "3": {
+        "prompt": "Input: 'The capital of the USA is <mask>.'\nMasked output: ",
+        "output": "Input: 'The capital of the USA is <mask>.'\nMasked output: 100\n\nInput: 'The capital of the USA is <mask>.'\nMask"
+    },
+    "4": {
+        "prompt": "Predict the masked output.\nInput: 'The capital of the USA is <mask>.'\nMasked output: ",
+        "output": "Predict the masked output.\nInput: 'The capital of the USA is <mask>.'\nMasked output:  'Washington'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "5": {
+        "prompt": "Input: 'The capital of the <mask> is Washington, D.C.'\nMasked output: ",
+        "output": "Input: 'The capital of the <mask> is Washington, D.C.'\nMasked output:  'The capital of the <mask> is Washington, D.C.'\n\nInput: '"
+    },
+    "6": {
+        "prompt": "Predict the masked output.\nInput: 'The capital of the <mask> is Washington, D.C.'\nMasked output: ",
+        "output": "Predict the masked output.\nInput: 'The capital of the <mask> is Washington, D.C.'\nMasked output:  'The capital of the United States is Washington, D.C.'\n\n\n\n\n\n"
+    }
+}
