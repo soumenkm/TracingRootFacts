@@ -70,21 +70,7 @@ class LlamaModelForProbing(torch.nn.Module):
             return {"logits": torch.stack(logits_output, dim=0), # (N, d)
                     "ff_out": torch.stack(act_output, dim=0) # (N, L, d)
             } 
-
-def get_mask_token(tokenizer: "tokenizer", predictions_output: dict) -> dict:
-    """predictions_output = (b, T, d)"""
-    
-    model_logit_output = predictions_output["logits"].argmax(dim=-1) # (b, T)
-    predicted_token_output = []
-    predicted_token_id_output = []
-
-    for i, mask_index in enumerate(predictions_output["mask_index"]):
-        token_ids = model_logit_output[i, mask_index].tolist()
-        predicted_token_output.append(tokenizer.convert_ids_to_tokens(token_ids))
-        predicted_token_id_output.append(token_ids)
-    
-    return  {"token_ids": predicted_token_id_output, "token": predicted_token_output}
-    
+  
 def prepare_dataset(tokenizer: "Tokenizer", csv_file_path: Path, num_of_samples: int, is_mlama: bool) -> dict:
     
     dataframe = pd.read_csv(csv_file_path)
