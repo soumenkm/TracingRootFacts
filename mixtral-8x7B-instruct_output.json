@@ -1,0 +1,102 @@
+[
+    {
+        "input": "The national flag of [MASK] is known as Tiranga .",
+        "pred_output": "India",
+        "true_output": "India"
+    },
+    {
+        "input": "The prime minister of India since 2014 is [MASK] .",
+        "pred_output": "N",
+        "true_output": "Narendra Modi"
+    },
+    {
+        "input": "The capital of India is [MASK] .",
+        "pred_output": "New",
+        "true_output": "New Delhi"
+    },
+    {
+        "input": "The Indian festival of lights is called [MASK] .",
+        "pred_output": "Di",
+        "true_output": "Diwali"
+    },
+    {
+        "input": "The national bird of India is the Indian [MASK] .",
+        "pred_output": "pe",
+        "true_output": "Peacock"
+    },
+    {
+        "input": "The Indian independence day is celebrated on 15th [MASK] .",
+        "pred_output": "August",
+        "true_output": "August"
+    },
+    {
+        "input": "The currency of India is called [MASK] .",
+        "pred_output": "ru",
+        "true_output": "Rupee"
+    },
+    {
+        "input": "The Indian city known as the 'City of Joy' is [MASK] .",
+        "pred_output": "Kol",
+        "true_output": "Kolkata"
+    },
+    {
+        "input": "The river considered holy in India is called [MASK] .",
+        "pred_output": "G",
+        "true_output": "Ganges"
+    },
+    {
+        "input": "The largest state in India by population is [MASK] .",
+        "pred_output": "U",
+        "true_output": "Uttar Pradesh"
+    },
+    {
+        "input": "The president of the United States lives in the [MASK] house .",
+        "pred_output": "White",
+        "true_output": "white"
+    },
+    {
+        "input": "The capital of the United States is [MASK] D.C. .",
+        "pred_output": "Washington",
+        "true_output": "Washington"
+    },
+    {
+        "input": "The American city known as the 'Silicon Valley' is [MASK] .",
+        "pred_output": "San",
+        "true_output": "California"
+    },
+    {
+        "input": "The river that runs through the Grand Canyon is the [MASK] river .",
+        "pred_output": "Colorado",
+        "true_output": "Colorado"
+    },
+    {
+        "input": "The largest state in the United States by area is [MASK] .",
+        "pred_output": "Alaska",
+        "true_output": "Alaska"
+    },
+    {
+        "input": "The American space agency is called [MASK] .",
+        "pred_output": "NASA",
+        "true_output": "NASA"
+    },
+    {
+        "input": "The capital of United Kingdom is [MASK] .",
+        "pred_output": "London",
+        "true_output": "London"
+    },
+    {
+        "input": "The headquarters of United Nations Organization (UN) is located at [MASK] .",
+        "pred_output": "New",
+        "true_output": "New York"
+    },
+    {
+        "input": "The Eiffel Tower is located at [MASK] .",
+        "pred_output": "Paris",
+        "true_output": "Paris"
+    },
+    {
+        "input": "The most reliable geopolitical partner of India is [MASK] .",
+        "pred_output": "United",
+        "true_output": "Russia"
+    }
+]

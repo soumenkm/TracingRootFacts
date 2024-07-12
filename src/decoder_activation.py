@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-from decoder_models import LlamaModelForProbing
+from decoder_models import LlamaModelForProbing, MixtralModelForProbing
 from transformers import AutoTokenizer
 from mask_dataset import MaskedDataset
 from langcodes import Language
@@ -34,7 +34,7 @@ class Activation:
             "Input: {input}\nPredicted masked output:")
         self.cache_data_dict = {}
         
-    def get_dataset_for_lang(self, lang: str, num_of_examples: int) -> dict:
+    def get_dataset_for_lang(self, lang: str, num_of_examples: int, num_rels: int) -> dict:
         
         pkl_file_path = Path(self.pkl_dir, f"{lang}_activation_data.pkl")
         if Path.exists(pkl_file_path):
@@ -44,6 +44,10 @@ class Activation:
         
         if num_of_examples == -1:
             num_of_examples = len(self.mlama_dataset.uuid_info_all_lang)
+        if num_rels == -1:
+            num_rels = len(self.mlama_dataset.rels)
+        
+        rel_uri_list = random.sample(self.mlama_dataset.rels, k=num_rels)
             
         data_dict = {}
         with tqdm(self.mlama_dataset.uuid_info_all_lang.items(),
@@ -53,33 +57,34 @@ class Activation:
             
             for count, (uuid, val) in enumerate(pbar):
                 if lang in val.keys():
-                    example = val[lang]["rel"].replace("[X]", str(val[lang]["sub"]))
-                    new_mask = "[MASK]"
-                    example = example.replace("[Y]", new_mask)
-                    example = self.prompt.format(input=example)
-                    inputs = self.tokenizer([example], return_tensors="pt")
-                    
-                    self.model.eval()
-                    with torch.no_grad():
-                        inputs = {k: v.to(self.device) for k, v in inputs.items()}
-                        outputs = self.model(**inputs)
-                    
-                    ff_output = outputs[self.output_type] # (N, L, d)
-                    avg_ff_output = ff_output.mean(dim=0) # (L, d)
-                    
-                    logits_output = outputs["logits"].argmax(dim=-1) # (N, d) -> (N,)
-                    pred_text = self.tokenizer.decode(logits_output.tolist()).strip().lower()
-                    true_text = val[lang]["obj"].strip().lower()
-                    
-                    new_data = {self.output_type: avg_ff_output,
-                                "inputs": example,
-                                "pred_text": pred_text,
-                                "true_text": true_text,
-                                "is_match": pred_text == true_text}
-                    
-                    data_dict[uuid] = {**val[lang], **new_data}
-                    if count >= num_of_examples:
-                        break
+                    if val[lang]["rel_uri"] in rel_uri_list:
+                        example = val[lang]["rel"].replace("[X]", str(val[lang]["sub"]))
+                        new_mask = "[MASK]"
+                        example = example.replace("[Y]", new_mask)
+                        example = self.prompt.format(input=example)
+                        inputs = self.tokenizer([example], return_tensors="pt")
+                        
+                        self.model.eval()
+                        with torch.no_grad():
+                            inputs = {k: v.to(self.device) for k, v in inputs.items()}
+                            outputs = self.model(**inputs)
+                        
+                        ff_output = outputs[self.output_type] # (N, L, d)
+                        avg_ff_output = ff_output.mean(dim=0) # (L, d)
+                        
+                        logits_output = outputs["logits"].argmax(dim=-1) # (N, d) -> (N,)
+                        pred_text = self.tokenizer.decode(logits_output.tolist()).strip().lower()
+                        true_text = val[lang]["obj"].strip().lower()
+                        
+                        new_data = {self.output_type: avg_ff_output,
+                                    "inputs": example,
+                                    "pred_text": pred_text,
+                                    "true_text": true_text,
+                                    "is_match": pred_text == true_text}
+                        
+                        data_dict[uuid] = {**val[lang], **new_data}
+                        if count >= num_of_examples:
+                            break
                 else:
                     data_dict[uuid] = f"{lang} does not exist"
                     
@@ -170,9 +175,12 @@ class Activation:
         uuid_list = []
         for uuid, val in self.mlama_dataset.uuid_info_all_lang.items():
             if lang in val.keys():
-                if bool(data_dict[uuid]["is_match"]):
-                    if "en" in self.mlama_dataset.uuid_info_all_lang[uuid].keys():
-                        uuid_list.append(uuid)
+                try:
+                    if bool(data_dict[uuid]["is_match"]):
+                        if "en" in self.mlama_dataset.uuid_info_all_lang[uuid].keys():
+                            uuid_list.append(uuid)
+                except KeyError:
+                    pass
 
         if num_uuids == -1:
             num_uuids = len(uuid_list)
@@ -270,24 +278,33 @@ def main(model_name: str, device: torch.device):
     
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     
-    if "llama" in model_name:
+    if "llama" in model_name.lower():
         model = LlamaModelForProbing(tokenizer=tokenizer)
         name = "llama3-7B-instruct"
+    elif "mixtral" in model_name.lower():
+        model = MixtralModelForProbing(tokenizer=tokenizer)
+        name = "mixtral-8x7B-Q4-instruct"
     else:
         raise NotImplementedError("Invalid model name!")
        
     mlama_dataset = MaskedDataset()
-    activation = Activation(device=device, mlama_dataset=mlama_dataset, tokenizer=tokenizer, model=model, name=name)
+    activation = Activation(device=device, 
+                            mlama_dataset=mlama_dataset, 
+                            tokenizer=tokenizer, 
+                            model=model, 
+                            name=name,
+                            is_load_model=True)
     
-    # activation.get_dataset_for_lang(lang="en", num_of_examples=-1)
-    activation.plot_activity_for_1_lang(lang="en", num_uuids=50)
+    # activation.get_dataset_for_lang(lang="en", num_of_examples=-1, num_rels=1)
+    # a = activation.load_pkl_activation_file(lang="en")
+    activation.plot_activity_for_1_lang(lang="en", num_uuids=10)
 
     # a = activation.plot_activity(lang="ms", fact_uuid="b73bf6c6-3468-4ab8-9f4d-3c6e28259f07")
     # b = activation.plot_activity(lang="id", fact_uuid="b73bf6c6-3468-4ab8-9f4d-3c6e28259f07")
     
 if __name__ == "__main__":
    
-    os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+    os.environ["CUDA_VISIBLE_DEVICES"] = "2"
     
     if torch.cuda.is_available():
         device_type = "cuda"
@@ -299,6 +316,6 @@ if __name__ == "__main__":
         print("Using CPU...")
 
     device = torch.device(device_type)
-    models_list = ["meta-llama/Meta-Llama-3-8B-Instruct"]
-    for model_name in models_list:
+    models_list = ["meta-llama/Meta-Llama-3-8B-Instruct", "mistralai/Mixtral-8x7B-Instruct-v0.1"]
+    for model_name in models_list[1:]:
         main(model_name=model_name, device=device)
