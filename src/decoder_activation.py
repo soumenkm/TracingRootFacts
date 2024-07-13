@@ -11,7 +11,7 @@ from mask_dataset import MaskedDataset
 from langcodes import Language
 from itertools import combinations
 import matplotlib.colors as mcolors
-# random.seed(42)
+random.seed(42)
 
 class Activation:
     
@@ -154,7 +154,7 @@ class Activation:
         plt.ylabel('Transformer Layers (0: bottom)')
         plt.yticks(ticks=range(L), labels=reversed(range(L)))
         
-        obj = str(data_dict[fact_uuid]["obj"])
+        obj = str(self.mlama_dataset.uuid_info_all_lang[fact_uuid]["en"]["obj"])
         
         example = self.mlama_dataset.uuid_info_all_lang[fact_uuid]["en"]["rel"].replace("[X]", 
             str(self.mlama_dataset.uuid_info_all_lang[fact_uuid]["en"]["sub"]))
@@ -293,11 +293,13 @@ def main(model_name: str, device: torch.device):
                             tokenizer=tokenizer, 
                             model=model, 
                             name=name,
-                            is_load_model=True)
-    
-    # activation.get_dataset_for_lang(lang="en", num_of_examples=-1, num_rels=1)
+                            is_load_model=False)
+    language_codes = ['en', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'ru', 'zh', 'ja', 'ko']
+    # for lang in language_codes:
+    #     activation.get_dataset_for_lang(lang=lang, num_of_examples=-1, num_rels=10)
     # a = activation.load_pkl_activation_file(lang="en")
-    activation.plot_activity_for_1_lang(lang="en", num_uuids=10)
+    for lang in language_codes:
+        activation.plot_activity_for_1_lang(lang=lang, num_uuids=10)
 
     # a = activation.plot_activity(lang="ms", fact_uuid="b73bf6c6-3468-4ab8-9f4d-3c6e28259f07")
     # b = activation.plot_activity(lang="id", fact_uuid="b73bf6c6-3468-4ab8-9f4d-3c6e28259f07")
@@ -317,5 +319,5 @@ if __name__ == "__main__":
 
     device = torch.device(device_type)
     models_list = ["meta-llama/Meta-Llama-3-8B-Instruct", "mistralai/Mixtral-8x7B-Instruct-v0.1"]
-    for model_name in models_list[1:]:
+    for model_name in models_list[:1]:
         main(model_name=model_name, device=device)
