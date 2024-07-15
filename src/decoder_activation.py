@@ -319,5 +319,5 @@ if __name__ == "__main__":
 
     device = torch.device(device_type)
     models_list = ["meta-llama/Meta-Llama-3-8B-Instruct", "mistralai/Mixtral-8x7B-Instruct-v0.1"]
-    for model_name in models_list[:1]:
+    for model_name in models_list[1:]:
         main(model_name=model_name, device=device)
