@@ -114,7 +114,10 @@ class Activation:
                     
                 if criteria:
                     act_list.append(torch.stack(val[self.output_type], dim=0)) # List[R x (L, d)]
-                    
+
+        if len(act_list) <= 10:
+            return None, len(act_list)
+                  
         act_rel_tensor = torch.stack(act_list, dim=0) # (R, L, d)
         R = act_rel_tensor.shape[0]
         act_rel_tensor = act_rel_tensor.transpose(0, 1) # (L, R, d)
@@ -138,28 +141,61 @@ class Activation:
         
         return binned_act
     
-    def plot_activity(self, lang: str, fact_uuid: str) -> torch.tensor:
+    def plot_activity(self, data_dict: dict, lang: str, fact_uuid: str, save_dir: Path) -> torch.tensor:
 
-        data_dict = self.load_pkl_activation_file(lang=lang)
-        act_data, R = self.get_activity(data_dict=data_dict, fact_uuid=fact_uuid) # (L, d)
+        plot_path = Path(save_dir, f"{fact_uuid}_activity_heatmap.png")
+        act_data, R = self.get_activity(data_dict=data_dict, fact_uuid=fact_uuid, is_right_only=True) # (L, d)
+        if act_data is None:
+            return
+        
         binned_act = self.get_binned_activity(act_data=act_data) # (L, num_bins)
         L = binned_act.shape[0]
         
-        plt.figure(figsize=(8, 6))
+        plt.figure(figsize=(8, 10))
         plt.imshow(binned_act.cpu(), aspect='auto', cmap='viridis_r')
         plt.colorbar(label='Activation Value')
         plt.xlabel('Bins')
         plt.ylabel('Transformer Layers (0: bottom)')
         plt.yticks(ticks=range(L), labels=reversed(range(L)))
         
+        obj = str(self.mlama_dataset.uuid_info_all_lang[fact_uuid]["en"]["obj"])
+        pred = bool(data_dict[fact_uuid]["is_match"])
+        
         example = self.mlama_dataset.uuid_info_all_lang[fact_uuid]["en"]["rel"].replace("[X]", 
             str(self.mlama_dataset.uuid_info_all_lang[fact_uuid]["en"]["sub"]))
         title = (f'Neuron Activity Pattern for Fact Translated to Lang: ' + str(Language.get(lang).display_name()) + 
-                 f'\nFact: {example}' + f"\nAvg over {R} triplets of same relation having both right and wrong predictions")
+                f'\nFact: {example} ([Y]: {obj}), Prediction: {pred}' + f"\nAvg over {R} triplets of same relation with only correct predictions")
         plt.title(title)
-        plt.savefig(str(Path(self.heatmap_dir, f"{lang}_{fact_uuid}_activity_heatmap.png")), dpi=300)
-        
+        plt.savefig(str(plot_path), dpi=300)
+        plt.close()
+    
         return binned_act
+
+    def plot_activity_for_1_lang(self, lang: str, pred_type: bool, num_uuids: int = 10):
+        
+        if not self.cache_data_dict:
+            data_dict = self.load_pkl_activation_file(lang=lang)
+        else:
+            data_dict = self.cache_data_dict[lang]
+
+        save_dir = Path(self.heatmap_dir, lang, str(pred_type))
+        save_dir.mkdir(exist_ok=True, parents=True)
+        
+        uuid_list = []
+        for uuid, val in self.mlama_dataset.uuid_info_all_lang.items():
+            if lang in val.keys():
+                try:
+                    if bool(data_dict[uuid]["is_match"]) == pred_type:
+                        if "en" in self.mlama_dataset.uuid_info_all_lang[uuid].keys():
+                            uuid_list.append(uuid)          
+                except KeyError:
+                    pass
+
+        if num_uuids == -1:
+            num_uuids = len(uuid_list)
+            
+        for fact_uuid in random.sample(uuid_list, k=min(num_uuids, len(uuid_list))):
+            self.plot_activity(data_dict=data_dict, lang=lang, fact_uuid=fact_uuid, save_dir=save_dir)
     
     def plot_activity_for_2_lang(self, lang1: str, lang2: str, is_right_only: bool = False):
         
@@ -339,19 +375,13 @@ def main(model_name: str, device: torch.device):
     mlama_dataset = MaskedDataset()
     activation = Activation(device=device, mlama_dataset=mlama_dataset, tokenizer=tokenizer, model=model, name=name)
     
-    # for lang1, lang2 in zip(["bn", "en", "en", "es", "hi", "en", "en", "id", "en", "en"], 
-    #                         ["hi", "nl", "de", "pt", "ur", "bn", "af", "ms", "ja", "ru"]):
-    #     activation.plot_activity_for_2_lang(lang1=lang1, lang2=lang2, is_right_only=True)
-    # a = activation.plot_activity(lang="ms", fact_uuid="b73bf6c6-3468-4ab8-9f4d-3c6e28259f07")
-    # b = activation.plot_activity(lang="id", fact_uuid="b73bf6c6-3468-4ab8-9f4d-3c6e28259f07")
-    # activation.plot_activity_for_2_lang(lang1="de", lang2="en")
-    # activation.plot_activity_for_2_lang(lang1="nl", lang2="en")
-    # jac_sim_list = activation.measure_cross_lingual_fact_rep(lang1="id", lang2="ms")
-    # print(jac_sim_list)
-    
+    for lang in ['zh', 'ja', 'ko', 'bn', 'hi']:
+        activation.cache_data_dict = {}
+        activation.plot_activity_for_1_lang(lang=lang, pred_type=True, num_uuids=20)
+        activation.plot_activity_for_1_lang(lang=lang, pred_type=False, num_uuids=20)
     
 if __name__ == "__main__":
-    cuda_ids = [4]
+    cuda_ids = [6]
     cvd = ""
     for i in cuda_ids:
         cvd += str(i) + ","
